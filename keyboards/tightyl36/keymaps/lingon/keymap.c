@@ -360,12 +360,15 @@ combo_t key_combos[COMBO_COUNT] = {
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
+
+  static uint16_t fnx_layer_timer;
+
   switch(combo_index) {
+
     case N_T_KOMMA:
       if (pressed) {
         caps_word_disable();
         tap_code16(LALT(KC_BSPC));
-;
       }
       break;
     case HP_COPY:
@@ -404,10 +407,12 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
         caps_word_disable();
         tap_code16(KC_DOT);
         tap_code16(KC_SPACE);
-        set_oneshot_mods(MOD_LSFT);
+        set_oneshot_mods(MOD_LSFT | get_oneshot_mods());
       }
       else {
-          layer_off(_BACKSPACE);
+        if (timer_elapsed(fnx_layer_timer) < 1300) {  
+                    clear_oneshot_mods();}
+          
       }    
       break;
     case AAI_FRAG:
@@ -607,7 +612,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           
     case L_LIT:
       if (record->event.pressed) {
-        SEND_STRING(SS_DOWN(X_LGUI) SS_DOWN(X_LSFT) SS_TAP(X_F11) SS_UP(X_LSFT) SS_UP(X_LGUI)  SS_DELAY(380)    SS_TAP(X_ESC) SS_TAP(X_HOME) SS_DELAY(350) SS_DOWN(X_LGUI) SS_DOWN(X_C) SS_DELAY(50) SS_UP(X_C) SS_UP(X_LGUI) SS_DOWN(X_LALT) SS_TAP(X_F12) SS_UP(X_LALT) SS_DELAY(500) SS_DOWN(X_LGUI) SS_TAP(X_2) SS_TAP(X_L) SS_DELAY(100) SS_TAP(X_V)  SS_UP(X_LGUI) SS_TAP(X_ENT) SS_DOWN(X_LCTL) SS_TAP(X_TAB) SS_UP(X_LCTL) SS_DOWN(X_LGUI) SS_TAP(X_TAB) SS_DELAY(500) SS_UP(X_LGUI) SS_DELAY(500) SS_TAP(X_RIGHT) SS_DOWN(X_LGUI) SS_TAP(X_C) SS_UP(X_LGUI)  SS_TAP(X_RIGHT) SS_TAP(X_RIGHT) SS_TAP(X_RIGHT) SS_TAP(X_RIGHT) SS_TAP(X_RIGHT) SS_TAP(X_RIGHT) SS_TAP(X_RIGHT) SS_TAP(X_RIGHT) SS_TAP(X_LEFT) SS_TAP(X_LEFT) SS_TAP(X_LEFT) SS_TAP(X_LEFT) SS_DOWN(X_LGUI) SS_TAP(X_TAB) SS_DELAY(350) SS_UP(X_LGUI) SS_DELAY(450) SS_DOWN(X_LGUI) SS_TAP(X_L) SS_TAP(X_V)  SS_UP(X_LGUI) SS_TAP(X_ENT) SS_DOWN(X_LCTL) SS_TAP(X_TAB) SS_TAP(X_TAB) SS_UP(X_LCTL));
+        SEND_STRING(SS_DOWN(X_LGUI) SS_DOWN(X_LSFT) SS_TAP(X_F11) SS_UP(X_LSFT) SS_UP(X_LGUI)  SS_DELAY(380)    SS_TAP(X_ESC) SS_TAP(X_HOME) SS_DELAY(350) SS_DOWN(X_LGUI) SS_DOWN(X_C) SS_DELAY(50) SS_UP(X_C) SS_UP(X_LGUI) SS_DOWN(X_LALT) SS_TAP(X_F12) SS_UP(X_LALT) SS_DELAY(500) SS_DOWN(X_LGUI) SS_TAP(X_2) SS_TAP(X_L) SS_DELAY(100) SS_TAP(X_V)  SS_UP(X_LGUI) SS_TAP(X_ENT) SS_DOWN(X_LCTL) SS_TAP(X_TAB) SS_UP(X_LCTL) SS_DOWN(X_LGUI) SS_TAP(X_TAB) SS_DELAY(500) SS_UP(X_LGUI) SS_DELAY(500) SS_TAP(X_RIGHT) SS_DOWN(X_LGUI) SS_TAP(X_C) SS_UP(X_LGUI)  SS_TAP(X_RIGHT) SS_TAP(X_RIGHT) SS_TAP(X_RIGHT) SS_TAP(X_RIGHT) SS_TAP(X_RIGHT) SS_TAP(X_RIGHT) SS_TAP(X_RIGHT) SS_TAP(X_RIGHT) SS_TAP(X_LEFT) SS_TAP(X_LEFT) SS_TAP(X_LEFT) SS_TAP(X_LEFT) SS_DOWN(X_LGUI) SS_TAP(X_TAB) SS_DELAY(350) SS_UP(X_LGUI) SS_DELAY(450) SS_DOWN(X_LGUI) SS_TAP(X_L) SS_TAP(X_V)  SS_UP(X_LGUI) SS_TAP(X_ENT) SS_DOWN(X_LGUI) SS_TAP(X_2) SS_UP(X_LGUI));
       } else {
       }
       break;

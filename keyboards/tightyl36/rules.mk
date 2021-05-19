@@ -35,4 +35,4 @@ LTO_ENABLE = yes
 OLED_DRIVER_ENABLE = no    # Enables the use of OLED displays
 RGBLIGHT_ENABLE = no      # Enable keyboard RGB underglow
 COMBO_ENABLE = yes
-DEBOUNCE_TYPE = sym_eager_pk
+DEBOUNCE_TYPE = asym_eager_defer_pk
