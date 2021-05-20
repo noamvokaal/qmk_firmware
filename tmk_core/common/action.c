@@ -571,6 +571,7 @@ void process_action(keyrecord_t *record, action_t action) {
                         } else {
                             dprint("KEYMAP_TAP_KEY: No tap: On on press\n");
                             layer_on(action.layer_tap.val);
+                            clear_oneshot_mods();
                         }
                     } else {
                         if (tap_count > 0) {

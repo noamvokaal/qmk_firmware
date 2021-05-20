@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BAS] = LAYOUT(
         KC_Q,   KC_F,   KC_L,   KC_M,   KC_J,                           KC_C,   KC_AE,  KC_O,   KC_OE,  KC_X,
         HRM_K,  HRM_R,  HRM_N,  HRM_T,  KC_G,                           KC_Y,   HRM_A,  HRM_E,  HRM_S,  HRM_V,
-        KC_Z,   MUS_H,   KC_P,   KC_D,   KC_B,                           KC_C,   MUS_I,  KC_AA,  KC_U,   KC_W,
+        KC_Z,   MUS_H,  KC_P,   KC_D,   KC_B,                           KC_C,   MUS_I,  KC_AA,  KC_U,   KC_W,
                                 LB_ENT, NAV_SPC,MUS_BS,         S_SFT,  SYM_B,  BS_TAB
     ),
 
@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,KC_HOME,KC_UP,  KC_END,_______,                        _______,KC_1,  KC_2,    KC_3,   KC_CAPS,
         _______,KC_LEFT,KC_DOWN,KC_RGHT,_______,                        _______,RSFT_T(KC_4), RGUI_T(KC_5),RALT_T(KC_6),KC_LCTL,
         _______,_______,KC_PGUP,KC_PGDN,_______,                        _______,KC_7,  KC_8,    KC_9,   _______,
-                                _______,_______,_______,        _______,_______,KC_0
+                                _______,_______,_______,        _______,LT(_SYM, KC_0),_______
     ),
 
 
